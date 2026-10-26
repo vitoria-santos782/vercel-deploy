@@ -1,0 +1,104 @@
+:root {
+  --campo: #1d3a2e;
+  --campo-fundo: #162c23;
+  --giz: #f1eee4;
+  --feno: #e3b23c;
+  --sage: #e9eee5;
+  --tinta: #1c2a22;
+  --linha: #9db3a2;
+  --fonte: "Archivo", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--fonte);
+  background: var(--sage);
+  color: var(--tinta);
+  line-height: 1.55;
+}
+
+/* ---------- Relógio ---------- */
+.relogio {
+  background: var(--campo);
+  color: var(--giz);
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 5vw, 4rem) clamp(2.5rem, 7vw, 5.5rem);
+  min-height: 80svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.hora-atual {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--feno);
+}
+.hora-atual span { color: var(--giz); opacity: .65; font-weight: 400; }
+.relogio h1 {
+  font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+  font-weight: 500;
+  max-width: 24ch;
+  line-height: 1.15;
+}
+.blocos {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: start;
+  gap: clamp(.5rem, 2.5vw, 2.5rem);
+}
+.bloco { display: flex; flex-direction: column; }
+.digitos {
+  font-size: clamp(2.6rem, 12vw, 9.5rem);
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: .95;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+.bloco-seg .digitos { color: var(--feno); }
+.rotulo { font-size: clamp(.8rem, 1.6vw, 1.1rem); opacity: .75; margin-top: .4rem; }
+.fim-data { opacity: .75; }
+
+/* ---------- Timeline ---------- */
+.timeline {
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 5vw, 4rem);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.timeline h2 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 2.5rem; }
+.semestres { list-style: none; padding: 0; border-left: 3px solid var(--campo); }
+.semestre { padding-left: clamp(1rem, 3vw, 2.5rem); margin-bottom: 3.5rem; position: relative; }
+.semestre::before {
+  content: "";
+  position: absolute; left: -11px; top: .35rem;
+  width: 19px; height: 19px; background: var(--feno);
+  border: 3px solid var(--campo); border-radius: 50%;
+}
+.semestre-topo { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.periodo { font-size: 1.8rem; font-weight: 800; font-stretch: 75%; color: var(--campo); }
+.semestre-topo h3 { font-weight: 500; font-size: 1.15rem; }
+.trabalhos { list-style: none; padding: 0; display: grid; gap: 1.75rem; }
+.trabalho {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) 1fr;
+  gap: 1.25rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--linha);
+}
+.trabalho:last-child { border-bottom: 0; }
+.trabalho img { width: 100%; height: auto; display: block; }
+.quando { font-size: .85rem; color: #4d6657; font-weight: 600; }
+.trabalho h4 { font-size: 1.25rem; margin: .15rem 0 .4rem; }
+.trabalho p { max-width: 62ch; }
+.techs { margin-top: .6rem; font-size: .9rem; color: #4d6657; }
+
+@media (max-width: 640px) {
+  .trabalho { grid-template-columns: 1fr; }
+}
+
+.rodape { background: var(--campo-fundo); color: var(--giz); padding: 1.5rem; text-align: center; opacity: .9; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+:focus-visible { outline: 3px solid var(--feno); outline-offset: 3px; }
